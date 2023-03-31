@@ -31,7 +31,7 @@ function Home() {
       .delete(`http://localhost:3000/api/product/delete/${id}`, { id })
       .then((result) => {
         //  remove the deleted product from the list
-        const temp = {...products};
+        const temp = { ...products };
         delete temp[result.data];
         setProducts(temp);
         setTotalProduct(Object.keys(temp).length);
@@ -40,7 +40,6 @@ function Home() {
         console.log(e.message);
       });
   };
-
 
   // When App initially loads, fetch data and store in state
   useEffect(() => {
@@ -81,7 +80,10 @@ function Home() {
       <td className="text-center">
         <Button
           onClick={() => {
-            navigate("/edit", { replace: true, state: { productId: product[0], product: product[1] } });
+            navigate("/edit", {
+              replace: true,
+              state: { productId: product[0], product: product[1] },
+            });
           }}
         >
           Edit
@@ -111,7 +113,7 @@ function Home() {
         <Table striped bordered hover>
           <thead>
             <tr>
-            <th className="text-center">Product Number</th>
+              <th className="text-center">Product Number</th>
               <th className="text-center">Product Name</th>
               <th className="text-center">Product Owner</th>
               <th className="text-center">Developer(s)</th>

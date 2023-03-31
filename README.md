@@ -24,6 +24,7 @@ The user base for this application will include a wide array of technical skills
 ### Developer Search
 ![Developer](https://github.com/LingJason/JASON-LING-IS24-full-stack-competition-req97073/blob/main/docs/developer.gif)
 
+
 ## Running the application
 
 You need **TWO** terminal windows/tabs for this app to run (or some other plan for running two Node processes).

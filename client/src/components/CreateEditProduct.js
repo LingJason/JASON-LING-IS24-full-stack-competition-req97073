@@ -82,20 +82,21 @@ export default function CreateEditProduct() {
 
     // If any required fields are empty, return without submitting form for edit
     if (
-      (location.state) &&
+      location.state &&
       (!productName || !productOwnerName || !developers[0] || !scrumMasterName)
     ) {
       return;
     }
 
-     // If any required fields are empty, return without submitting form for create
+    // If any required fields are empty, return without submitting form for create
     if (
-      (!location.state) && (!productName ||
-      !productOwnerName ||
-      !developers[0] ||
-      !scrumMasterName ||
-      !startDate
-    )) {
+      !location.state &&
+      (!productName ||
+        !productOwnerName ||
+        !developers[0] ||
+        !scrumMasterName ||
+        !startDate)
+    ) {
       return;
     }
 

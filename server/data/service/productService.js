@@ -1,4 +1,4 @@
-const {mockData} = require("../mock/mockData");
+const { mockData } = require("../mock/mockData");
 
 // Create a 6 digit random unique number and assigned it as a key to newProduct
 const addProduct = (newProduct) => {
@@ -27,7 +27,11 @@ const getProductByScrumMaster = (query) => {
 const getProductByDeveloper = (query) => {
   const filteredProducts = {};
   for (const [k, v] of Object.entries(mockData)) {
-    if (v.developers.find(developer => developer.toLowerCase().includes(query.toLowerCase()))) {
+    if (
+      v.developers.find((developer) =>
+        developer.toLowerCase().includes(query.toLowerCase())
+      )
+    ) {
       filteredProducts[k] = v;
     }
   }
@@ -36,7 +40,7 @@ const getProductByDeveloper = (query) => {
 
 // Update existing product
 const updateProduct = (id, updateProduct) => {
-  mockData[id] = {...mockData[id], ...updateProduct};
+  mockData[id] = { ...mockData[id], ...updateProduct };
   return mockData[id];
 };
 
@@ -46,12 +50,11 @@ const deleteProduct = (productId) => {
   return productId;
 };
 
-
 module.exports = {
   addProduct,
   getAllProducts,
   getProductByScrumMaster,
   getProductByDeveloper,
   updateProduct,
-  deleteProduct
+  deleteProduct,
 };
