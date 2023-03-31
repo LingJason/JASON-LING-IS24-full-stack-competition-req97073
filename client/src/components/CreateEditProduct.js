@@ -272,7 +272,7 @@ export default function CreateEditProduct() {
           onClick={(e) => handleSubmit(e)}
           type="submit"
         >
-          {location.state ? "Update" : "Create"}
+          Save
         </Button>
       </Form>
     </div>

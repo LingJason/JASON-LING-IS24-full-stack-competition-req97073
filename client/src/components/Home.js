@@ -133,7 +133,7 @@ function Home() {
           onClick={() => navigate("/create")}
           className="col-md-12 text-center"
         >
-          Create
+          Add
         </Button>
       </Container>
     </div>
