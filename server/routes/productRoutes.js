@@ -11,3 +11,20 @@ router.post("/", (req, res) => {
 router.get("/", (req, res) => {
   res.json(productService.getAllProducts());
 });
+
+// UPDATE - put
+router.put("/:id", (req, res) => {
+  res.json(productService.updateProduct(req.params.id, req.body));
+});
+
+// UPDATE search based on dropdown - put
+router.post("/search", (req, res) => {
+  switch (req.body.filter) {
+    case "scrumMaster":
+      res.json(productService.getProductByScrumMaster(req.body.search));
+      break;
+    case "developer":
+      res.json(productService.getProductByDeveloper(req.body.search));
+      break;
+  }
+});
