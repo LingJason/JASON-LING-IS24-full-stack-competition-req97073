@@ -30,7 +30,7 @@ You need **TWO** terminal windows/tabs for this app to run (or some other plan f
 
 1. Clone the repository into your directory.
 2. In one terminal, `cd` into `server`. Run `npm install` to install the dependencies. Then run `npm start` to launch the server.
-3. In the other terminal, `cd` into `client`. Run `npm install` to install the dependencies, then `npm start`. to launch the client.
+3. In the other terminal, `cd` into `client`. Run `npm install` to install the dependencies, then `npm start` to launch the client.
 
 ## Dependencies / Packages
 - axios
