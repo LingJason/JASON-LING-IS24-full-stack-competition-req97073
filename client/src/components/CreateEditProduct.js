@@ -5,7 +5,9 @@ import { useLocation, useNavigate } from "react-router-dom";
 import NavBar from "./NavBar";
 import axios from "axios";
 
-export default function EditProduct() {
+export default function CreateEditProduct() {
+
+    // Using hooks to initialize state
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -38,12 +40,14 @@ export default function EditProduct() {
     location.state?.product?.methodology || "Agile"
   );
 
+  // Updating the developers array with new names
   const handleDevelopers = (name, index) => {
     const temp = [...developers];
     temp[index] = name;
     setDevelopers(temp);
   }
 
+  // Reset error messages when the form is submitted
   const resetError = () => {
     setProductNameError("");
     setProductOwnerNameError("");
@@ -55,6 +59,7 @@ export default function EditProduct() {
     e.preventDefault();
     resetError();
 
+  // Checking if required fields are empty and setting appropriate error messages
     if (!productName) {
       setProductNameError("Product Name - Required");
     }
@@ -71,6 +76,7 @@ export default function EditProduct() {
       setScrumMasterNameError("Scrum Master Name - Required");
     }
 
+    // If any required fields are empty, return without submitting form
     if (
       !productName ||
       !productOwnerName ||
@@ -97,6 +103,7 @@ export default function EditProduct() {
         updateProduct
       )
       .then((result) => {
+        // Return back to home page if successful
         navigate("/");
       })
       .catch((e) => {
@@ -117,6 +124,7 @@ export default function EditProduct() {
       axios
         .post("http://localhost:3000/api/product", newProduct)
         .then((result) => {
+          // Return back to home page if successful
           navigate("/");
         })
         .catch((e) => {
