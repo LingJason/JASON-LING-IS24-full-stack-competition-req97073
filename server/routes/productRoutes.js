@@ -34,10 +34,17 @@ const getProductByDeveloper = (query) => {
   return filteredProducts;
 };
 
+// Update existing products
+const updateProduct = (id, updateProduct) => {
+  mockData[id] = {...mockData[id], ...updateProduct};
+  return mockData[id];
+};
+
 
 module.exports = {
   addProduct,
   getAllProducts,
   getProductByScrumMaster,
-  getProductByDeveloper
+  getProductByDeveloper,
+  updateProduct,
 };
