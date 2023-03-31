@@ -10,15 +10,19 @@ The user base for this application will include a wide array of technical skills
 ## Final Product 
 
 ### Create Product
+![Create](https://github.com/LingJason/JASON-LING-IS24-full-stack-competition-req97073/blob/main/docs/create.gif)
 
 ### Edit Product
+![Edit](https://github.com/LingJason/JASON-LING-IS24-full-stack-competition-req97073/blob/main/docs/edit.gif)
 
 ### Delete Product
 ![Delete](https://github.com/LingJason/JASON-LING-IS24-full-stack-competition-req97073/blob/main/docs/delete.gif)
 
 ### Scrum Master Search
+![ScrumMaster](https://github.com/LingJason/JASON-LING-IS24-full-stack-competition-req97073/blob/main/docs/scrum_master.gif)
 
 ### Developer Search
+![Developer](https://github.com/LingJason/JASON-LING-IS24-full-stack-competition-req97073/blob/main/docs/developer.gif)
 
 ## Running the application
 
