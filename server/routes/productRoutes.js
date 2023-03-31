@@ -23,9 +23,21 @@ const getProductByScrumMaster = (query) => {
   return filteredProducts;
 };
 
+// Returns all data that matches search for developer
+const getProductByDeveloper = (query) => {
+  const filteredProducts = {};
+  for (const [k, v] of Object.entries(mockData)) {
+    if (v.developers.find(developer => developer.toLowerCase().includes(query.toLowerCase()))) {
+      filteredProducts[k] = v;
+    }
+  }
+  return filteredProducts;
+};
+
 
 module.exports = {
   addProduct,
   getAllProducts,
-  getProductByScrumMaster
+  getProductByScrumMaster,
+  getProductByDeveloper
 };
