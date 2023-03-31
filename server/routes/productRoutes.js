@@ -28,3 +28,11 @@ router.post("/search", (req, res) => {
       break;
   }
 });
+
+//DELETE - delete
+router.delete("/delete/:id", (req, res) => {
+  const id = req.params.id;
+  res.json(productService.deleteProduct(id));
+});
+
+module.exports = router;
