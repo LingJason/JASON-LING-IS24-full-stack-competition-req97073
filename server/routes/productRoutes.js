@@ -6,3 +6,8 @@ const router = express.Router();
 router.post("/", (req, res) => {
   res.json(productService.addProduct(req.body));
 });
+
+// READ - get
+router.get("/", (req, res) => {
+  res.json(productService.getAllProducts());
+});
