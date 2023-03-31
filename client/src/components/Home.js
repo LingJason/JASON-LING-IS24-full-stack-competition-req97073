@@ -15,6 +15,7 @@ function Home() {
   const navigate = useNavigate();
 
   const getProducts = () => {
+    // Send request to read
     axios
       .get("http://localhost:3000/api/product")
       .then((result) => {
@@ -27,6 +28,7 @@ function Home() {
   };
 
   const handleDelete = (id) => {
+    // Send request to delete
     axios
       .delete(`http://localhost:3000/api/product/delete/${id}`, { id })
       .then((result) => {
@@ -66,6 +68,7 @@ function Home() {
     }
   }, [filter, search]);
 
+  // Generates a table for all mock data
   const productsTable = Object.entries(products).map((product) => (
     <tr key={product[0]}>
       <td className="text-center">{product[0]}</td>
