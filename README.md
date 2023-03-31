@@ -31,7 +31,7 @@ You need **TWO** terminal windows/tabs for this app to run (or some other plan f
 
 1. Clone the repository into your directory.
 2. In one terminal, `cd` into `server`. Run `npm install` to install the dependencies. Then run `npm start` to launch the server.(Must run server first)
-3. In the other terminal, `cd` into `client`. Run `npm install` to install the dependencies, then `npm start` to launch the client.
+3. In the other terminal, `cd` into `client`. Run `npm install` to install the dependencies, then `npm start` to launch the client. React will usually want to use port 3000, but it will be in use by the server. The message `Would you like to run the app on another port instead?  (Y/n)` will pop up reply Y.
 
 ## Dependencies / Packages
 - axios
