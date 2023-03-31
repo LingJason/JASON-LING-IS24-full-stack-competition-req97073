@@ -34,10 +34,16 @@ const getProductByDeveloper = (query) => {
   return filteredProducts;
 };
 
-// Update existing products
+// Update existing product
 const updateProduct = (id, updateProduct) => {
   mockData[id] = {...mockData[id], ...updateProduct};
   return mockData[id];
+};
+
+// Delete product
+const deleteProduct = (productId) => {
+  delete mockData[productId];
+  return productId;
 };
 
 
@@ -47,4 +53,5 @@ module.exports = {
   getProductByScrumMaster,
   getProductByDeveloper,
   updateProduct,
+  deleteProduct
 };
