@@ -6,8 +6,13 @@ const addProduct = (newProduct) => {
   mockData[id] = newProduct;
   return id;
 };
+// Returns all mockData
+const getAllProducts = () => {
+  return mockData;
+};
 
 
 module.exports = {
-  addProduct
+  addProduct,
+  getAllProducts,
 };
