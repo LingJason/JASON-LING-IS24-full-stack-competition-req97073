@@ -1,0 +1,18 @@
+* {
+  font: 15px sans-serif;
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.Create-button {
+  display: flex;
+  justify-content: center;
+}
+
+.developers {
+  display: flex;
+}
