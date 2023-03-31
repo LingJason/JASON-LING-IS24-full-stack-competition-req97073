@@ -10,31 +10,36 @@ export default function CreateEditProduct() {
   const location = useLocation();
   const navigate = useNavigate();
 
+  // State for product name
   const [productName, setProductName] = useState(
     location.state?.product?.productName || ""
   );
   const [productNameError, setProductNameError] = useState("");
 
+  // State for product owner name
   const [productOwnerName, setProductOwnerName] = useState(
     location.state?.product?.productOwnerName || ""
   );
   const [productOwnerNameError, setProductOwnerNameError] = useState("");
 
+  // State for developers
   const [developers, setDevelopers] = useState(
     location.state?.product?.developers || []
   );
 
   const [developersError, setDevelopersError] = useState("");
 
+  // State for scrum master name
   const [scrumMasterName, setScrumMasterName] = useState(
     location.state?.product?.scrumMasterName || ""
   );
   const [scrumMasterNameError, setScrumMasterNameError] = useState("");
 
+  // State for start date
   const [startDate, setStartDate] = useState("");
-
   const [startDateError, setStartDateError] = useState("");
 
+  // State for methodology
   const [methodology, setMethodology] = useState(
     location.state?.product?.methodology || "Agile"
   );
@@ -54,6 +59,7 @@ export default function CreateEditProduct() {
     setScrumMasterNameError("");
     setStartDateError("");
   };
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -100,7 +106,7 @@ export default function CreateEditProduct() {
       return;
     }
 
-    // organizing data in an object
+    // Organizing data in an object
     if (location.state) {
       const updateProduct = {
         productId: location.state?.product?.productId,
@@ -111,6 +117,7 @@ export default function CreateEditProduct() {
         methodology,
       };
 
+      // Send request to update
       axios
         .put(
           `http://localhost:3000/api/product/${location.state?.productId}`,
@@ -124,7 +131,7 @@ export default function CreateEditProduct() {
           console.log(e);
         });
     } else {
-      // organizing data in an object
+      // Organizing data in an object
       const newProduct = {
         productName,
         productOwnerName,
@@ -134,6 +141,7 @@ export default function CreateEditProduct() {
         methodology,
       };
 
+      // Send request to create
       axios
         .post("http://localhost:3000/api/product", newProduct)
         .then((result) => {
