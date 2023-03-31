@@ -61,7 +61,6 @@ export default function CreateEditProduct() {
     setStartDateError("");
   };
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
     resetError();
@@ -158,7 +157,9 @@ export default function CreateEditProduct() {
   return (
     <div>
       <NavBar />
-      <h1 className="title">{location.state ? "Update Form" : "Create Form"}</h1>
+      <h1 className="title">
+        {location.state ? "Update Form" : "Create Form"}
+      </h1>
       <Form className="form">
         <Form.Group controlId="formProductName">
           <Form.Control
