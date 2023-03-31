@@ -6,8 +6,7 @@ import NavBar from "./NavBar";
 import axios from "axios";
 
 export default function CreateEditProduct() {
-
-    // Using hooks to initialize state
+  // Using hooks to initialize state
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -34,7 +33,7 @@ export default function CreateEditProduct() {
 
   const [startDate, setStartDate] = useState("");
 
-  const [startDateError, setStartDateError] = useState(false);
+  const [startDateError, setStartDateError] = useState("");
 
   const [methodology, setMethodology] = useState(
     location.state?.product?.methodology || "Agile"
@@ -45,7 +44,7 @@ export default function CreateEditProduct() {
     const temp = [...developers];
     temp[index] = name;
     setDevelopers(temp);
-  }
+  };
 
   // Reset error messages when the form is submitted
   const resetError = () => {
@@ -53,13 +52,14 @@ export default function CreateEditProduct() {
     setProductOwnerNameError("");
     setDevelopersError("");
     setScrumMasterNameError("");
+    setStartDateError("");
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     resetError();
 
-  // Checking if required fields are empty and setting appropriate error messages
+    // Checking if required fields are empty and setting appropriate error messages
     if (!productName) {
       setProductNameError("Product Name - Required");
     }
@@ -72,17 +72,30 @@ export default function CreateEditProduct() {
       setDevelopersError("Developer Name - Required");
     }
 
+    if (!startDate) {
+      setStartDateError("Start Date - Required");
+    }
+
     if (!scrumMasterName) {
       setScrumMasterNameError("Scrum Master Name - Required");
     }
 
-    // If any required fields are empty, return without submitting form
+    // If any required fields are empty, return without submitting form for edit
     if (
-      !productName ||
+      (location.state) &&
+      (!productName || !productOwnerName || !developers[0] || !scrumMasterName)
+    ) {
+      return;
+    }
+
+     // If any required fields are empty, return without submitting form for create
+    if (
+      (!location.state) && (!productName ||
       !productOwnerName ||
       !developers[0] ||
-      !scrumMasterName
-    ) {
+      !scrumMasterName ||
+      !startDate
+    )) {
       return;
     }
 
@@ -92,25 +105,24 @@ export default function CreateEditProduct() {
         productId: location.state?.product?.productId,
         productName: productName,
         productOwnerName: productOwnerName,
-        developers: developers.filter((developer) => developer != ""),
+        developers: developers.filter((developer) => developer !== ""),
         scrumMasterName: scrumMasterName,
-        methodology
+        methodology,
       };
-      
-      axios
-      .put(
-        `http://localhost:3000/api/product/${location.state?.productId}`,
-        updateProduct
-      )
-      .then((result) => {
-        // Return back to home page if successful
-        navigate("/");
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-    } else {
 
+      axios
+        .put(
+          `http://localhost:3000/api/product/${location.state?.productId}`,
+          updateProduct
+        )
+        .then((result) => {
+          // Return back to home page if successful
+          navigate("/");
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    } else {
       // organizing data in an object
       const newProduct = {
         productName,
@@ -120,7 +132,7 @@ export default function CreateEditProduct() {
         startDate,
         methodology,
       };
-  
+
       axios
         .post("http://localhost:3000/api/product", newProduct)
         .then((result) => {
@@ -131,7 +143,6 @@ export default function CreateEditProduct() {
           console.log(e);
         });
     }
-
   };
 
   return (
@@ -147,7 +158,9 @@ export default function CreateEditProduct() {
             type="text"
             value={productName}
           ></Form.Control>
-          <Form.Control.Feedback type="invalid">{productNameError}</Form.Control.Feedback>
+          <Form.Control.Feedback type="invalid">
+            {productNameError}
+          </Form.Control.Feedback>
         </Form.Group>
         <Form.Group controlId="formProductOwnerName">
           <Form.Control
@@ -158,44 +171,60 @@ export default function CreateEditProduct() {
             type="text"
             value={productOwnerName}
           ></Form.Control>
-          <Form.Control.Feedback type="invalid">{productOwnerNameError}</Form.Control.Feedback>
+          <Form.Control.Feedback type="invalid">
+            {productOwnerNameError}
+          </Form.Control.Feedback>
         </Form.Group>
         <Form.Group className="developers" controlId="formDevelopers">
-
           <Form.Control
             isInvalid={developersError}
-            onChange={(e) => {handleDevelopers(e.target.value, 0)}}
+            onChange={(e) => {
+              handleDevelopers(e.target.value, 0);
+            }}
             placeholder="Developer Name"
             required
             type="text"
             value={developers[0]}
           ></Form.Control>
           <Form.Control
-            onChange={(e) => {handleDevelopers(e.target.value, 1)}}
+            onChange={(e) => {
+              handleDevelopers(e.target.value, 1);
+            }}
             placeholder="Developer Name"
             type="text"
             value={developers[1]}
           ></Form.Control>
           <Form.Control
-            onChange={(e) => {handleDevelopers(e.target.value, 2)}}
+            onChange={(e) => {
+              handleDevelopers(e.target.value, 2);
+            }}
             placeholder="Developer Name"
             type="text"
             value={developers[2]}
           ></Form.Control>
           <Form.Control
-            onChange={(e) => {handleDevelopers(e.target.value, 3)}}
+            onChange={(e) => {
+              handleDevelopers(e.target.value, 3);
+            }}
             placeholder="Developer Name"
             type="text"
             value={developers[3]}
           ></Form.Control>
           <Form.Control
-            onChange={(e) => {handleDevelopers(e.target.value, 4)}}
+            onChange={(e) => {
+              handleDevelopers(e.target.value, 4);
+            }}
             placeholder="Developer Name"
             type="text"
             value={developers[4]}
           ></Form.Control>
         </Form.Group>
-        <Form.Control.Feedback type="invalid" style={{ display: developersError ? "block": "none" }}>{developersError}</Form.Control.Feedback>
+        <Form.Control.Feedback
+          type="invalid"
+          style={{ display: developersError ? "block" : "none" }}
+        >
+          {developersError}
+        </Form.Control.Feedback>
         <Form.Group controlId="formScrumMasterName">
           <Form.Control
             isInvalid={scrumMasterNameError}
@@ -205,19 +234,21 @@ export default function CreateEditProduct() {
             type="text"
             value={scrumMasterName}
           ></Form.Control>
-          <Form.Control.Feedback type="invalid">{scrumMasterNameError}</Form.Control.Feedback>
+          <Form.Control.Feedback type="invalid">
+            {scrumMasterNameError}
+          </Form.Control.Feedback>
         </Form.Group>
-        {location.state?.product?.startDate ? null : 
-        <Form.Group controlId="formStartDate">
-          <Form.Control
-            isInvalid={startDateError}
-            feedback={startDateError ? startDateError : "Start Date"}
-            onChange={(e) => setStartDate(e.target.value)}
-            placeholder="Start Date"
-            required
-            type="Date"
-          ></Form.Control>
-        </Form.Group>}
+        {location.state?.product?.startDate ? null : (
+          <Form.Group controlId="formStartDate">
+            <Form.Control
+              isInvalid={startDateError}
+              onChange={(e) => setStartDate(e.target.value)}
+              placeholder="Start Date"
+              required
+              type="Date"
+            ></Form.Control>
+          </Form.Group>
+        )}
         <Form.Group controlId="formMethodology">
           <Form.Select
             onChange={(e) => setMethodology(e.target.value)}

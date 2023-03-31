@@ -96,7 +96,7 @@ function Home() {
     <div>
       <NavBar />
       <Container>
-        <h1 className="title">BC Services</h1>
+        <h1 className="title">BC Service Product Management</h1>
         <div>Total Products: {totalProduct}</div>
         <InputGroup>
           <Form.Control
