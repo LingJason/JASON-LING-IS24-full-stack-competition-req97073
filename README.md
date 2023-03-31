@@ -30,7 +30,7 @@ The user base for this application will include a wide array of technical skills
 You need **TWO** terminal windows/tabs for this app to run (or some other plan for running two Node processes).
 
 1. Clone the repository into your directory.
-2. In one terminal, `cd` into `server`. Run `npm install` to install the dependencies. Then run `npm start` to launch the server.
+2. In one terminal, `cd` into `server`. Run `npm install` to install the dependencies. Then run `npm start` to launch the server.(Must run server first)
 3. In the other terminal, `cd` into `client`. Run `npm install` to install the dependencies, then `npm start` to launch the client.
 
 ## Dependencies / Packages
