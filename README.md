@@ -14,6 +14,7 @@ The user base for this application will include a wide array of technical skills
 ### Edit Product
 
 ### Delete Product
+![Delete](https://github.com/LingJason/JASON-LING-IS24-full-stack-competition-req97073/blob/main/docs/delete.gif)
 
 ### Scrum Master Search
 
