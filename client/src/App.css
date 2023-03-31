@@ -16,3 +16,8 @@ h1 {
 .developers {
   display: flex;
 }
+
+.form {
+  margin: 25px;
+  padding: 25px;
+}

@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useLocation, useNavigate } from "react-router-dom";
 import NavBar from "./NavBar";
 import axios from "axios";
+import "../App.css";
 
 export default function CreateEditProduct() {
   // Using hooks to initialize state
@@ -157,7 +158,8 @@ export default function CreateEditProduct() {
   return (
     <div>
       <NavBar />
-      <Form>
+      <h1 className="title">{location.state ? "Update Form" : "Create Form"}</h1>
+      <Form className="form">
         <Form.Group controlId="formProductName">
           <Form.Control
             isInvalid={productNameError}
